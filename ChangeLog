@@ -26,5 +26,3 @@ Default printing of MHposterior objects that doesn't barf the whole trace
 
 ######## 06-04-11
 Non-NULL DIC for one-dimensional models
-
-
