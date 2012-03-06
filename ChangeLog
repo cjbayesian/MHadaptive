@@ -1,3 +1,8 @@
+1.1-7
+######## 03-05-12
+Fixed one-dimensional initial prop_sigma estimation
+Added posterior mean to BCI() value.
+
 1.1-6
 ######## 12-20-11
 Removed dependency on depreciated compiler package.
