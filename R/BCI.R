@@ -8,6 +8,7 @@ function(mcmc_object,interval=c(0.025,0.975))
         for(i in 1:num_params)
         {
             bci[i,]<-quantile(mcmc_object$trace[,i],probs=interval)
+            post_mean<-mean(mcmc_object$trace[,i])
         }
         rownames(bci)<-mcmc_object$par_names
         colnames(bci)<-as.character(interval)
@@ -16,6 +17,6 @@ function(mcmc_object,interval=c(0.025,0.975))
     {  
             bci<-quantile(mcmc_object$trace,probs=interval)
     }
-    return(bci)
+    return(cbind(bci,post_mean))
 }
 
