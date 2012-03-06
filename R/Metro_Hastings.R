@@ -7,16 +7,23 @@ function(li_func,pars,prop_sigma=NULL,par_names=NULL,iterations=50000,burn_in=10
     if (is.null(par_names))
         par_names<-letters[1:length(pars)]
 
-    if( ( dim(prop_sigma)[1] != length(pars) ||  dim(prop_sigma)[2] != length(pars) ) && !is.null(prop_sigma) )
-        stop("prop_sigma not of dimension length(pars) x length(pars)")
-
+    if(!is.null(dim(prop_sigma)))
+    {
+        if( ( dim(prop_sigma)[1] != length(pars) ||  dim(prop_sigma)[2] != length(pars) ) && !is.null(prop_sigma) )
+            stop("prop_sigma not of dimension length(pars) x length(pars)")
+    }
 
     if(is.null(prop_sigma)) #if no proposal matrix given, estimate the Fisher information to use as the diagonal (start in the right variance scale)
     {
-        fit<-optim(pars,li_func,control=list("fnscale"=-1),hessian=TRUE,...)
-        fisher_info<-solve(-fit$hessian)
-        prop_sigma<-sqrt(diag(fisher_info))
-        prop_sigma<-diag(prop_sigma)
+        if(length(pars)!=1)
+        {
+            fit<-optim(pars,li_func,control=list("fnscale"=-1),hessian=TRUE,...)
+            fisher_info<-solve(-fit$hessian)
+            prop_sigma<-sqrt(diag(fisher_info))
+            prop_sigma<-diag(prop_sigma)
+        }else{
+            prop_sigma<-1+pars/2
+        }
     }
 
     prop_sigma<-makePositiveDefinite(prop_sigma)
