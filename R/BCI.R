@@ -17,6 +17,7 @@ function(mcmc_object,interval=c(0.025,0.975))
     if(num_params == 1)
     {  
             bci<-quantile(mcmc_object$trace,probs=interval)
+	    post_mean<-mean(mcmc_object$trace)
     }
     return(cbind(bci,post_mean))
 }
