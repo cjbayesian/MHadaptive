@@ -1,3 +1,7 @@
+1.1.8
+######## 03-13-12
+Fixed missing post_mean for 1D models
+
 1.1-7
 ######## 03-05-12
 Fixed one-dimensional initial prop_sigma estimation
