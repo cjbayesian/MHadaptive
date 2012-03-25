@@ -10,3 +10,4 @@ Description: Performs general Metropolis-Hastings Markov Chain Monte Carlo sampl
 
 License: GPL (>= 3)
 
+http://cran.r-project.org/web/packages/MHadaptive/
