@@ -1,1 +1,6 @@
--Metro_hastings() value as coda object (optional?)
+1. Metro_hastings() value as coda object (optional?)
+
+2. Multiple chains and convergence diagnosis
+
+3. Automated adaptive cessation
+
